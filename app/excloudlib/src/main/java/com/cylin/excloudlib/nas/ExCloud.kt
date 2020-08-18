@@ -24,7 +24,7 @@ object ExCloud {
 /**
  * 上傳圖片到NAS
  */
-fun uploadImage(file: File): ExResponse? {
+fun ExCloud.uploadImage(file: File): ExResponse? {
 
     val (request, response, result) = Fuel.upload(ExCloud.API.UploadImage.nasUrl).source { _, _ ->
         file
@@ -40,7 +40,7 @@ fun uploadImage(file: File): ExResponse? {
 /**
  * 上傳影片到NAS
  */
-fun uploadVideo(file: File): ExResponse? {
+fun ExCloud.uploadVideo(file: File): ExResponse? {
 
     val (_, _, result) = Fuel.upload(ExCloud.API.UploadVideo.nasUrl).source { _, _ ->
         file
@@ -56,7 +56,7 @@ fun uploadVideo(file: File): ExResponse? {
 /**
  * 取得NAS上的時間
  */
-fun getServerTime(callback: (ExServerTimeResponse?) -> Unit) {
+fun ExCloud.getServerTime(callback: (ExServerTimeResponse?) -> Unit) {
 
     Fuel.get(ExCloud.API.ServerTime.nasUrl)
         .responseObject(ExServerTimeResponse.Deserializer()) { _, _, result ->
