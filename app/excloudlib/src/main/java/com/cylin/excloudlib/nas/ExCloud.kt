@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import java.io.File
 
 
-object ExHttp {
+object ExCloud {
 
     // NAS
     var host = ""
@@ -26,7 +26,7 @@ object ExHttp {
  */
 fun uploadImage(file: File): ExResponse? {
 
-    val (request, response, result) = Fuel.upload(ExHttp.API.UploadImage.nasUrl).source { _, _ ->
+    val (request, response, result) = Fuel.upload(ExCloud.API.UploadImage.nasUrl).source { _, _ ->
         file
     }.name { "file" }.responseString()
 
@@ -42,7 +42,7 @@ fun uploadImage(file: File): ExResponse? {
  */
 fun uploadVideo(file: File): ExResponse? {
 
-    val (_, _, result) = Fuel.upload(ExHttp.API.UploadVideo.nasUrl).source { _, _ ->
+    val (_, _, result) = Fuel.upload(ExCloud.API.UploadVideo.nasUrl).source { _, _ ->
         file
     }.name { "file" }.responseString()
 
@@ -58,7 +58,7 @@ fun uploadVideo(file: File): ExResponse? {
  */
 fun getServerTime(callback: (ExServerTimeResponse?) -> Unit) {
 
-    Fuel.get(ExHttp.API.ServerTime.nasUrl)
+    Fuel.get(ExCloud.API.ServerTime.nasUrl)
         .responseObject(ExServerTimeResponse.Deserializer()) { _, _, result ->
             val (response, err) = result
             callback(response)
