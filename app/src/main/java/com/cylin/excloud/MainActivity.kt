@@ -2,7 +2,7 @@ package com.cylin.excloud
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.cylin.excloudlib.nas.ExHttp
+import com.cylin.excloudlib.nas.ExCloud
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        ExHttp.host = BuildConfig.NAS_HOST
-        android.util.Log.d(TAG, ">> onCreate: ${ExHttp.host}")
+        ExCloud.host = "BuildConfig.NAS_HOST"
+        android.util.Log.d(TAG, ">> onCreate: ${ExCloud.host}")
     }
 }

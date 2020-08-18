@@ -17,9 +17,6 @@ android {
     }
 
     buildTypes {
-        debug {
-            buildConfigField "String", "NAS_HOST", '"https://{YOUR_HOST_URL}"'
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
